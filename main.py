@@ -1,15 +1,5 @@
 from fastapi import FastAPI
+from routers.alunos import router as router_alunos
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Engenharia da Computação!"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
-
-@app.post("/items/")
-def create_item(item: dict):
-    return {"item": item}
+app.include_router(router_alunos)
